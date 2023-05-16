@@ -161,7 +161,7 @@ public:
             alunos[kountA].setIdade(idade);
             alunos[kountA].setMatricula(matricula);
             alunos[kountA].setSerie(serie);
-            kountA++;
+            ++kountA;
         }
         else{
             std::cout << "Vetor estudantes cheio" << std::endl;
@@ -199,7 +199,7 @@ public:
             funcionarios[kountF].setMatricula(matricula);
             funcionarios[kountF].setCargo(cargo);
             funcionarios[kountF].setSalario(salario);
-            kountF++;
+            ++kountF;
         }
         else{
             std::cout << "Vetor funcionários cheio" << std::endl;
