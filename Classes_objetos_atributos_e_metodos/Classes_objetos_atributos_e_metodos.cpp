@@ -14,7 +14,7 @@ public:
 
     Aluno(){}
 
-    Aluno(std::string nomeCompleto, std::string cpf, std::string idade, int matricula, std::string serie){
+    Aluno(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
         this->nomeCompleto = nomeCompleto;
         this->cpf = cpf;
         this->idade = idade;
@@ -71,7 +71,7 @@ public:
 
     Funcionario(){}
 
-    Funcionario(std::string nomeCompleto, std::string cpf, std::string idade, int matricula, std::string cargo, float salario){
+    Funcionario(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string cargo, float salario){
         this->nomeCompleto = nomeCompleto;
         this->cpf = cpf;
         this->idade = idade;
@@ -118,7 +118,7 @@ public:
     float getSalario(){
         return this->salario;
     }
-    void setSerie(float salario){
+    void setSalario(float salario){
         this->salario = salario;
     }
 };
@@ -133,7 +133,7 @@ class Escola{
     // Funcionario funcionarios[5];
     std::vector<Aluno> estudantes;
     // Aluno alunos[10];
-    int cont{0};
+    int kountA{0}, kountF{0};
 
 public:
 
@@ -142,7 +142,7 @@ public:
         this->cnpj = cnpj;
     }
 
-    void inserirAluno(std::string nomeCompleto, std::string cpf, std::string idade, int matricula, std::string serie){
+    void inserirAluno(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
         Aluno temp(nomeCompleto, cpf, idade, matricula, serie);
         estudantes.push_back(temp);
         
@@ -150,27 +150,24 @@ public:
 
     }
 
-    void inserirAlun(std::string nomeCompleto, std::string cpf, std::string idade, int matricula, std::string serie){
-        if (cont < 10)
+    void inserirAlun(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
+        if (kountA < 10)
         {
-            alunos[cont].setNome(nomeCompleto);
-            alunos[cont].setCpf(cpf);
-            alunos[cont].setIdade(idade);
-            alunos[cont].setMatricula(matricula);
-            alunos[cont].setSerie(serie);
-            cont++;
+            alunos[kountA].setNome(nomeCompleto);
+            alunos[kountA].setCpf(cpf);
+            alunos[kountA].setIdade(idade);
+            alunos[kountA].setMatricula(matricula);
+            alunos[kountA].setSerie(serie);
+            kountA++;
         }
-        else
-        {
+        else{
             std::cout << "Vetor estudantes cheio" << std::endl;
         }
     }
 
-    void listarAlun()
-    {
+    void listarAlun(){
         std::cout << "###### Estudantes ######" << std::endl;
-        for (int i = 0; i < cont; i++)
-        {
+        for (auto i{0}; i < kountA; ++i){
             std::cout << "Nome: " << alunos[i].getNome() << std::endl
                       << "Cpf: " << alunos[i].getCpf() << std::endl
                       << "Idade: " << alunos[i].getIdade() << std::endl
@@ -182,8 +179,8 @@ public:
 
     float calcularSalarios(){
         float soma = 0;
-        for (int i = 0; i < cont; i++){
-            soma += funcionarios[i].getSalario();
+        for (auto j{0}; j < kountF; ++j){
+            soma += funcionarios[j].getSalario();
         }
         return soma;
     }
