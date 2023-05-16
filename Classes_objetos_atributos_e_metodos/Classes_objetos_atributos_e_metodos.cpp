@@ -154,8 +154,7 @@ public:
 
     // Inserir com Classe.
     void inserirAlun(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
-        if (kountA < 10)
-        {
+        if (kountA < 10){
             alunos[kountA].setNome(nomeCompleto);
             alunos[kountA].setCpf(cpf);
             alunos[kountA].setIdade(idade);
@@ -191,8 +190,7 @@ public:
 
     // Inserir com Classe.
     void inserirFun(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string cargo, float salario){
-        if (kountF < 5)
-        {
+        if (kountF < 5){
             funcionarios[kountF].setNome(nomeCompleto);
             funcionarios[kountF].setCpf(cpf);
             funcionarios[kountF].setIdade(idade);
