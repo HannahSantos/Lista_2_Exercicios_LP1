@@ -127,12 +127,14 @@ class Escola{
 
     std::string nomeEscola;
     std::string cnpj;
-    Funcionario *funcionarios = new Funcionario[5];
+    // Alunos:
     Aluno *alunos = new Aluno[10];
-    std::vector<Funcionario> funcionarios;
-    // Funcionario funcionarios[5];
+    // Aluno alunos[10]:
     std::vector<Aluno> estudantes;
-    // Aluno alunos[10];
+    // Funcionarios:
+    Funcionario *funcionarios = new Funcionario[5];
+    // Funcionario funcionarios[5]:
+    std::vector<Funcionario> empregados;
     int kountA{0}, kountF{0};
 
 public:
@@ -142,14 +144,15 @@ public:
         this->cnpj = cnpj;
     }
 
+    // Alunos:
+
+    // Inserir com vector.
     void inserirAluno(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
         Aluno temp(nomeCompleto, cpf, idade, matricula, serie);
         estudantes.push_back(temp);
-        
-
-
     }
 
+    // Inserir com Classe.
     void inserirAlun(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string serie){
         if (kountA < 10)
         {
@@ -165,22 +168,63 @@ public:
         }
     }
 
+    // Listar componentes do vetor.
     void listarAlun(){
         std::cout << "###### Estudantes ######" << std::endl;
         for (auto i{0}; i < kountA; ++i){
             std::cout << "Nome: " << alunos[i].getNome() << std::endl
                       << "Cpf: " << alunos[i].getCpf() << std::endl
                       << "Idade: " << alunos[i].getIdade() << std::endl
-                      << "Matricula: " << alunos[i].getMatricula() << std::endl
-                      << "Salario: " << alunos[i].getSerie() << std::endl
+                      << "Matrícula: " << alunos[i].getMatricula() << std::endl
+                      << "Série: " << alunos[i].getSerie() << std::endl
                       << "****************************" << std::endl;
         }
     }
 
-    float calcularSalarios(){
-        float soma = 0;
+    // Funcionarios:
+
+    // Inserir com vector.
+    void inserirFunc(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string cargo, float salario){
+        Funcionario temp(nomeCompleto, cpf, idade, matricula, cargo, salario);
+        empregados.push_back(temp);
+    }
+
+    // Inserir com Classe.
+    void inserirFun(std::string nomeCompleto, std::string cpf, std::string idade, long int matricula, std::string cargo, float salario){
+        if (kountF < 5)
+        {
+            funcionarios[kountF].setNome(nomeCompleto);
+            funcionarios[kountF].setCpf(cpf);
+            funcionarios[kountF].setIdade(idade);
+            funcionarios[kountF].setMatricula(matricula);
+            funcionarios[kountF].setCargo(cargo);
+            funcionarios[kountF].setSalario(salario);
+            kountF++;
+        }
+        else{
+            std::cout << "Vetor funcionários cheio" << std::endl;
+        }
+    }
+
+    // Listar componentes do vetor.
+    void listarFun(){
+        std::cout << "###### Funcionários ######" << std::endl;
         for (auto j{0}; j < kountF; ++j){
-            soma += funcionarios[j].getSalario();
+            std::cout << "Nome: " << funcionarios[j].getNome() << std::endl
+                      << "Cpf: " << funcionarios[j].getCpf() << std::endl
+                      << "Idade: " << funcionarios[j].getIdade() << std::endl
+                      << "Matrícula: " << funcionarios[j].getMatricula() << std::endl
+                      << "Cargo: " << funcionarios[j].getCargo() << std::endl
+                      << "Salário: " << funcionarios[j].getSalario() << std::endl
+                      << "****************************" << std::endl;
+        }
+    }
+
+    // Somar todos os 'float salario' inseridos.
+    float calcularSalarios(){
+        float soma{0};
+        for (auto k{0}; k < kountF; ++k){
+            soma += funcionarios[k].getSalario();
         }
         return soma;
     }
